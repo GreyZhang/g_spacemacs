@@ -336,6 +336,7 @@ you should place your code here."
   ;;   (disable-theme theme))
   (modify-syntax-entry ?_ "w")
   (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (global-hungry-delete-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
