@@ -1,0 +1,8 @@
+* My sapcemacs configurations
+** about this repo
+- All plugins and configurations are from spacemacs. I keep this because I found install spacemacs usually met a lot of problems. This configuration may be a little old, yet I feel it is stable and powerful engough for me.
+** Some configurations by myself
+- The default theme is changed.
+- Use Courier New as default fonts.
+** Some key bindings:
+
