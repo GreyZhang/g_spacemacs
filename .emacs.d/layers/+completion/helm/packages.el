@@ -511,11 +511,13 @@ Search for a search tool in the order provided by `dotspacemacs-search-tools'."
           (spacemacs/set-leader-keys
             "pb"  'helm-projectile-switch-to-buffer
             "pd"  'helm-projectile-find-dir
-            "pf"  'helm-projectile-find-file
+            ;; "pf"  'helm-projectile-find-file
+            "pf"  'find-file-in-project
             "pF"  'helm-projectile-find-file-dwim
             "ph"  'helm-projectile
             "pp"  'helm-projectile-switch-project
             "pr"  'helm-projectile-recentf
+            "pss" 'projectile-ag
             "sgp" 'helm-projectile-grep))))))
 
 (defun helm/init-helm-spacemacs-help ()

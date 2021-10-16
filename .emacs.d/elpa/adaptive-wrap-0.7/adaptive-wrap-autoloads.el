@@ -18,6 +18,10 @@ Wrap the buffer text with adaptive filling.
 
 ;;;***
 
+;;;### (autoloads nil nil ("adaptive-wrap-pkg.el") (0 0 0 0))
+
+;;;***
+
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t

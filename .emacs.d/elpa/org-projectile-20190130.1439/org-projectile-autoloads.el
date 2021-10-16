@@ -47,6 +47,10 @@ were part of the capture template definition.
 
 ;;;***
 
+;;;### (autoloads nil nil ("org-projectile-pkg.el") (0 0 0 0))
+
+;;;***
+
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t

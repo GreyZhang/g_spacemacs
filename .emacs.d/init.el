@@ -32,3 +32,6 @@
   (spacemacs/setup-startup-hook)
   (require 'server)
   (unless (server-running-p) (server-start)))
+(require 'elpa-mirror)
+;; myelpa is the ONLY repository now, dont forget trailing slash in the directory
+(setq package-archives '(("myelpa" . "~/elpa_test/")))

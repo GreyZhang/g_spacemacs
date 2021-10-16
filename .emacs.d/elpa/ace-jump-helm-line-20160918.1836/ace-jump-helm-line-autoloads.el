@@ -51,6 +51,10 @@ Automatically show line labels in `helm'.
 
 ;;;***
 
+;;;### (autoloads nil nil ("ace-jump-helm-line-pkg.el") (0 0 0 0))
+
+;;;***
+
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t

@@ -267,7 +267,7 @@ Use `org-pomodoro-long-break-sound' to determine what sound that should be."
   :group 'org-pomodoro
   :type 'string)
 
-(defcustom org-pomodoro-long-break-length 20
+(defcustom org-pomodoro-long-break-length 10
   "The length of a long break in minutes."
   :group 'org-pomodoro
   :type 'integer)

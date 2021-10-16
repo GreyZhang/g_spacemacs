@@ -4880,7 +4880,7 @@ Return output file name.
 
 ;;;***
 
-;;;### (autoloads nil "ox-md" "ox-md.el" (0 0 0 0))
+;;;### (autoloads nil "ox-md" "ox-md.el" "8c71b478d4e65b73ade054f063fd7180")
 ;;; Generated autoloads from ox-md.el
 
 (autoload 'org-md-export-as-markdown "ox-md" "\
@@ -4950,11 +4950,9 @@ Return output file name.
 
 \(fn PLIST FILENAME PUB-DIR)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-md" '("org-md-")))
-
 ;;;***
 
-;;;### (autoloads nil "ox-odt" "ox-odt.el" (0 0 0 0))
+;;;### (autoloads nil "ox-odt" "ox-odt.el" "45fb134b33513af3eedc7e3f23c9c3cc")
 ;;; Generated autoloads from ox-odt.el
 
 (put 'org-odt-preferred-output-format 'safe-local-variable 'stringp)
@@ -5014,11 +5012,9 @@ is non-nil then the newly converted file is opened using
 
 \(fn &optional IN-FILE OUT-FMT OPEN)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-odt" '("org-odt-")))
-
 ;;;***
 
-;;;### (autoloads nil "ox-org" "ox-org.el" (0 0 0 0))
+;;;### (autoloads nil "ox-org" "ox-org.el" "972097e855219af48a9bbf11d46718cf")
 ;;; Generated autoloads from ox-org.el
 
 (autoload 'org-org-export-as-org "ox-org" "\
@@ -5094,11 +5090,9 @@ Return output file name.
 
 \(fn PLIST FILENAME PUB-DIR)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-org" '("org-org-")))
-
 ;;;***
 
-;;;### (autoloads nil "ox-publish" "ox-publish.el" (0 0 0 0))
+;;;### (autoloads nil "ox-publish" "ox-publish.el" "c482babb6cfcbf40e277920bd2c79d0e")
 ;;; Generated autoloads from ox-publish.el
 
 (defalias 'org-publish-project 'org-publish)
@@ -5138,8 +5132,6 @@ With a prefix argument, force publishing of all files in
 the project.
 
 \(fn &optional FORCE ASYNC)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-publish" '("org-publish-")))
 
 ;;;***
 
@@ -5305,7 +5297,7 @@ the reports is done using the TaskJuggler GUI.
 
 ;;;***
 
-;;;### (autoloads nil "ox-texinfo" "ox-texinfo.el" (0 0 0 0))
+;;;### (autoloads nil "ox-texinfo" "ox-texinfo.el" "3b67fdba7e3d087dfe1bfff25105323a")
 ;;; Generated autoloads from ox-texinfo.el
 
 (autoload 'org-texinfo-export-to-texinfo "ox-texinfo" "\
@@ -5389,8 +5381,6 @@ itemized list in Org syntax in an Texinfo buffer and use this
 command to convert it.
 
 \(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-texinfo" '("org-texinfo-")))
 
 ;;;***
 

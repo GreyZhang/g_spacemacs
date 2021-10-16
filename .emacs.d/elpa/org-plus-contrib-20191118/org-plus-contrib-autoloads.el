@@ -2251,14 +2251,6 @@ The location of ODT styles.")
 
 ;;;***
 
-;;;### (autoloads "actual autoloads are elsewhere" "ox" "ox.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from ox.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox" '("org-export-")))
-
-;;;***
-
 ;;;### (autoloads nil "ox-bibtex" "ox-bibtex.el" (0 0 0 0))
 ;;; Generated autoloads from ox-bibtex.el
 
@@ -2442,6 +2434,38 @@ Return PDF file's name.
 
 ;;;***
 
+;;;### (autoloads "actual autoloads are elsewhere" "ox-md" "ox-md.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ox-md.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-md" '("org-md-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "ox-odt" "ox-odt.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ox-odt.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-odt" '("org-odt-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "ox-org" "ox-org.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ox-org.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-org" '("org-org-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "ox-publish" "ox-publish.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ox-publish.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-publish" '("org-publish-")))
+
+;;;***
+
 ;;;### (autoloads nil "ox-rss" "ox-rss.el" (0 0 0 0))
 ;;; Generated autoloads from ox-rss.el
 
@@ -2601,6 +2625,14 @@ the reports is done using the TaskJuggler GUI.
 \(fn &optional SUBTREEP VISIBLE-ONLY)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-taskjuggler" '("org-taskjuggler-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "ox-texinfo" "ox-texinfo.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ox-texinfo.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ox-texinfo" '("org-texinfo-")))
 
 ;;;***
 
