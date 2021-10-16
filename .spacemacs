@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -39,7 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      helm
      auto-completion
-     better-defaults
+     ;; better-defaults
      emacs-lisp
      git
      ;; markdown
@@ -49,17 +48,23 @@ values."
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     version-control
-     ycmd
+     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag
-                                      solarized-theme
+   dotspacemacs-additional-packages '(
                                       color-theme-sanityinc-tomorrow
+                                      sound-wav
+                                      powershell
+                                      ag
+                                      solarized-theme
                                       monokai-theme
+                                      find-file-in-project
+                                      pyim
+                                      elpa-mirror
+                                      benchmark-init
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -116,7 +121,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner nil
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -132,8 +137,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(sanityinc-tomorrow-bright
+   dotspacemacs-themes '(
                          monokai
+                         sanityinc-tomorrow-bright
                          spacemacs-light
                          spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -190,7 +196,7 @@ values."
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 10
+   dotspacemacs-large-file-size 1
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -308,9 +314,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  ;; (require 'subr-x)
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://mirrors.163.com/elpa/melpa/")
+(setq configuration-layer--elpa-archives
+        ;; '(("melpa" . "~/elpa_test/")))
+       '(("melpa" . "http://mirrors.163.com/elpa/melpa/")
           ("org-cn"   . "http://mirrors.163.com/elpa/org/")
           ("gnu-cn"   . "http://mirrors.163.com/elpa/gnu/")))
   )
@@ -322,8 +328,20 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  )
+(defun set-bigger-spacing ()
+  (setq-local default-text-properties '(line-spacing 0.00 line-height 1.10)))
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
   (global-set-key (kbd "<f2>") 'org-pomodoro)
   (global-set-key (kbd "<f5>") 'dired-jump)
+  (global-set-key (kbd "<f9>") 'spacemacs/comment-or-uncomment-lines)
   (global-company-mode 1)
   (add-hook 'c-mode-hook
             (lambda ()
@@ -336,9 +354,24 @@ you should place your code here."
   ;;   (disable-theme theme))
   (modify-syntax-entry ?_ "w")
   (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (global-hungry-delete-mode)
+  (global-set-key (kbd "M-j") 'yas-expand)
+  ;; (setq org-todo-keywords
+  ;;       '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+  (require 'find-file-in-project)
+  (global-set-key (kbd "C-c jj") 'find-file-at-point)
+  (setq-default sp-escape-quotes-after-insert nil)
+  (add-hook 'text-mode-hook 'set-bigger-spacing)
+  (add-hook 'prog-mode-hook 'set-bigger-spacing)
+  ;; set support for Arduino project file as default.
+  (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.def\\'" . c-mode))
+  (require 'pyim)
+  (require 'pyim-basedict)
+  (pyim-basedict-enable)
+  (setq default-input-method "pyim")
+  (setq pyim-default-scheme 'quanpin)
+  (global-set-key (kbd "C-\\") 'toggle-input-method)
   )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -346,21 +379,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
- '(blink-cursor-mode nil)
- '(column-number-mode t)
- '(company-backends
-   (quote
-    (company-bbdb company-eclim company-semantic company-xcode company-cmake company-capf company-files
-                  (company-dabbrev-code company-gtags company-etags company-keywords)
-                  company-oddmuse company-dabbrev)))
- '(menu-bar-mode nil)
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   (quote
-    (company-ycmd ycmd request-deferred deferred company-quickhelp pos-tip solarized-light-high-contrast-palette-alist-theme solarized-light-high-contrast-theme-theme solarized-light-high-contrast-theme solarized-theme \(quote\ sanityinc-tomorrow-bright\)-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data ag unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy evil-magit magit transient git-commit with-editor diff-hl company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(projectile-tags-command "ctags -Re *")
- '(tool-bar-mode nil))
+   '(benchmark-init hydra powerline projectile spinner pkg-info org-plus-contrib lv parent-mode epl request flx highlight smartparens iedit anzu evil goto-chg undo-tree f bind-map bind-key packed s avy popup pyim pyim-basedict xr helm-company helm-c-yasnippet company yasnippet auto-complete ivy deferred org-category-capture alert log4e gntp magit-popup helm-gitignore magit git-commit async with-editor transient dash helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-ag ace-jump-helm-line helm helm-core yaml-mode ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline sound-wav solarized-theme smex smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters pug-mode powershell popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim move-text monokai-theme magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flx-ido find-file-in-project fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elpa-mirror elisp-slime-nav dumb-jump diminish diff-hl define-word counsel-projectile company-ycmd company-web company-statistics column-enforce-mode color-theme-sanityinc-tomorrow clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ag adaptive-wrap ace-window ace-link ac-ispell))
+ '(projectile-tags-command "ctags -Re *"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

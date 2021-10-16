@@ -4,5 +4,11 @@
 ** Some configurations by myself
 - The default theme is changed.
 - Use Courier New as default fonts.
+- Remove some useless layers.
+- Add support for org-pomodoro.
+- Add pyim which is used for Chinese input.
+- Add elpa-mirror which can help me to backup all packages.
+- Use find-file-in-project to replace default function in spacemacs.
+- Add benchmark-init which can be used to statistic start time for each package.
 ** Some key bindings:
 
